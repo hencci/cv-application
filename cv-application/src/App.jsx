@@ -1,12 +1,32 @@
 import React, { useState } from "react";
 import GeneralInfo from "./components/GeneralInfo";
+import Education from "./components/Education";
 import "./styles/app.css";
 
 export default function App() {
-  // store general info at top-level so preview and other components can use it
   const [general, setGeneral] = useState({ name: "", email: "", phone: "" });
 
+  const [educationList, setEducationlist] = useState([]);
+
   const handleGeneralSubmit = (data) => setGeneral(data);
+
+  // Education handlers
+  const addEducation = (edu) => {
+    setEducationList((prev) => [
+      ...prev,
+      { ...edu, id: Date.now().toString() },
+    ]);
+  };
+
+  const updateEducation = (id, edu) => {
+    setEducationList((prev) =>
+      prev.map((e) => (e.id === id ? { ...e, ...edu } : e))
+    );
+  };
+
+  const removeEducation = (id) => {
+    setEducationList((prev) => prev.filter((e) => e.id !== id));
+  };
 
   return (
     <div className="app-container">
@@ -16,7 +36,12 @@ export default function App() {
         {/* Mount GeneralInfo and pass current state + submit handler */}
         <GeneralInfo data={general} onSubmit={handleGeneralSubmit} />
 
-        {/* Next steps: Education, Experience components will be added below */}
+        <Education
+          list={educationList}
+          onAdd={addEducation}
+          onUpdate={updateEducation}
+          onRemove={removeEducation}
+        />
       </div>
     </div>
   );
