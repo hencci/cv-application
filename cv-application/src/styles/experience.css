@@ -1,0 +1,24 @@
+.experience-section {
+  margin-top: 12px;
+}
+
+.exp-item {
+  border-top: 1px solid #f0f0f0;
+  padding: 10px 0;
+}
+
+.exp-display strong {
+  display: block;
+}
+
+.muted {
+  color: #6b7280;
+}
+
+.small {
+  font-size: 12px;
+}
+
+.experience-section .mini-form {
+  margin-bottom: 12px;
+}
