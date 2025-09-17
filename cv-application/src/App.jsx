@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import GeneralInfo from "./components/GeneralInfo";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
+import CVPreview from "./components/CVPreview";
 import "./styles/app.css";
+import "./styles/preview.css";
 
 export default function App() {
   const [general, setGeneral] = useState({ name: "", email: "", phone: "" });
-
   const [educationList, setEducationList] = useState([]);
-
   const [experienceList, setExperienceList] = useState([]);
 
   const handleGeneralSubmit = (data) => setGeneral(data);
@@ -50,8 +50,8 @@ export default function App() {
   };
 
   return (
-    <div className="app-container">
-      <div className="panel">
+    <div className="app-container two-column">
+      <main className="panel">
         <h2 style={{ marginTop: 0 }}>CV Builder (Vite)</h2>
 
         <GeneralInfo data={general} onSubmit={handleGeneralSubmit} />
@@ -69,7 +69,15 @@ export default function App() {
           onUpdate={updateExperience}
           onRemove={removeExperience}
         />
-      </div>
+      </main>
+      <aside className="panel preview-panel">
+        <h3 style={{ marginTop: 0 }}>Live Preview</h3>
+        <CVPreview
+          general={general}
+          education={educationList}
+          experience={experienceList}
+        />
+      </aside>
     </div>
   );
 }
