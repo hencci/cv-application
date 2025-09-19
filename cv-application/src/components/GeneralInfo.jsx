@@ -101,7 +101,7 @@ export default function GeneralInfo({ data = {}, onSubmit }) {
             name="phone"
             type="tel"
             value={form.phone}
-            placeholder="08012345678"
+            placeholder="start with 070, 080, 090, 071, 081 or 091 (11 digits)"
             onChange={handleChange}
             required
             hasError={!!errors.phone}

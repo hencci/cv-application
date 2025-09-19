@@ -82,7 +82,6 @@
   transition: box-shadow 0.12s ease, border-color 0.12s ease,
     transform 0.06s ease;
   outline: none;
-  -webkit-appearance: none;
 }
 
 .form-control:focus {
