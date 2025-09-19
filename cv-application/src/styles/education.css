@@ -3,22 +3,9 @@
 }
 
 .edu-item {
-  border-top: 1px solid #f0f0f0;
   padding: 10px 0;
 }
 
 .edu-display strong {
   display: block;
-}
-
-.muted {
-  color: #6b7280;
-}
-
-.small {
-  font-size: 12px;
-}
-
-.education-section .mini-form {
-  margin-bottom: 12px;
 }

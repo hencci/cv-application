@@ -1,12 +1,7 @@
 .general-section {
   margin-top: 12px;
 }
-
-.display-block h4 {
-  margin: 0;
-}
-
-/* tiny helper for form spacing inside the section */
-.general-section .mini-form {
-  margin-bottom: 12px;
+.display-block {
+  padding: 8px 4px;
+  background: transparent;
 }

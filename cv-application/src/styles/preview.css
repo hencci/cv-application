@@ -1,72 +1,67 @@
+.preview-panel {
+  background: linear-gradient(180deg, #fbfbff, #ffffff);
+  padding: 16px;
+}
+
 .cv-preview {
-  font-family: inherit;
   font-size: 14px;
-  line-height: 1.35;
+  color: var(--text);
 }
 
 .cv-header {
-  border-bottom: 1px solid #e6e7eb;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.04);
   padding-bottom: 10px;
   margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .cv-name {
-  margin: 0 0 6px 0;
+  margin: 0;
   font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
 }
 
 .cv-contact {
-  color: #6b7280;
+  color: var(--muted);
   font-size: 13px;
-}
-
-.cv-contact .sep {
-  margin: 0 6px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 .cv-section {
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .cv-section h4 {
   margin: 0 0 8px 0;
-}
-
-.cv-edu-list,
-.cv-exp-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  font-size: 14px;
+  color: #111827;
+  font-weight: 700;
 }
 
 .cv-edu-item,
 .cv-exp-item {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed rgba(15, 23, 42, 0.03);
 }
 
-.cv-edu-title {
-  font-weight: 600;
-}
-
+.cv-edu-title,
 .cv-exp-title {
   font-weight: 600;
 }
 
 .cv-exp-resp {
   margin: 6px 0 0 0;
+  color: #111827;
 }
 
-.muted {
-  color: #6b7280;
-}
-
-.small {
-  font-size: 12px;
-}
-
-.preview-panel {
-  background: #fbfbff;
-  padding: 12px;
-  border-radius: 8px;
-  box-shadow: 0 4px 14px rgba(14, 18, 32, 0.04);
+/* small muted helper text */
+.muted.small {
+  color: var(--muted);
+  font-size: 13px;
 }
