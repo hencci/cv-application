@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import FormField from "./FormField";
 import "../styles/education.css";
+import { generateYears } from "../utils/dateUtils";
 
 export default function Education({ list = [], onAdd, onUpdate, onRemove }) {
   // empty template for new entries
   const empty = { school: "", title: "", date: "" };
+  const years = generateYears({ start: 1980 });
 
   // showAdd toggles the top-level add form
   const [showAdd, setShowAdd] = useState(false);
@@ -14,6 +16,8 @@ export default function Education({ list = [], onAdd, onUpdate, onRemove }) {
   // editingId: when set, indicates which entry is currently being edited
   const [editingId, setEditingId] = useState(null);
 
+  const [errors, setErrors] = useState({});
+
   // Sync: when the add form is closed, reset form values
   useEffect(() => {
     if (!showAdd && editingId === null) setForm(empty);
@@ -22,14 +26,24 @@ export default function Education({ list = [], onAdd, onUpdate, onRemove }) {
   const handleChange = (e) =>
     setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
 
+  const validate = (vals) => {
+    const e = {};
+    if (!vals.school.trim()) e.school = "School is required.";
+    if (!vals.title.trim()) e.title = "Title of study is required.";
+    if (!vals.date.trim()) e.date = "Please select a year.";
+    return e;
+  };
+
   // Add a new education entry
   const handleAdd = (e) => {
     e.preventDefault();
-    // simple guard: don't add empty school/title
-    if (!form.school.trim() && !form.title.trim()) return;
-    onAdd?.(form);
-    setForm(empty);
-    setShowAdd(false);
+    const found = validate(form);
+    setErrors(found);
+    if (Object.keys(found).length === 0) {
+      onAdd?.(form);
+      setForm(empty);
+      setShowAdd(false);
+    }
   };
 
   // Start editing an existing item: fill form and set editingId
@@ -46,10 +60,13 @@ export default function Education({ list = [], onAdd, onUpdate, onRemove }) {
   // Submit edited item
   const submitEdit = (e) => {
     e.preventDefault();
-    if (!editingId) return;
-    onUpdate?.(editingId, form);
-    setEditingId(null);
-    setForm(empty);
+    const found = validate(form);
+    setErrors(found);
+    if (Object.keys(found).length === 0) {
+      onUpdate?.(editingId, form);
+      setEditingId(null);
+      setForm(empty);
+    }
   };
 
   return (
@@ -76,22 +93,32 @@ export default function Education({ list = [], onAdd, onUpdate, onRemove }) {
             name="school"
             value={form.school}
             onChange={handleChange}
-            placeholder="University of X"
+            required
+            hasError={!!errors.school}
           />
+          {errors.school && <div className="field-error">{errors.school}</div>}
+
           <FormField
             label="Title of study"
             name="title"
             value={form.title}
             onChange={handleChange}
-            placeholder="BSc Computer Science"
+            required
+            hasError={!!errors.title}
           />
+          {errors.title && <div className="field-error">{errors.title}</div>}
+
           <FormField
-            label="Date of study"
+            label="Year of graduation"
             name="date"
             value={form.date}
             onChange={handleChange}
-            placeholder="2018 - 2022"
+            options={years.map((y) => ({ value: y, label: y }))}
+            required
+            hasError={!!errors.date}
           />
+          {errors.date && <div className="field-error">{errors.date}</div>}
+
           <div style={{ display: "flex", gap: 8 }}>
             <button type="submit">Submit</button>
           </div>
@@ -112,19 +139,38 @@ export default function Education({ list = [], onAdd, onUpdate, onRemove }) {
                   name="school"
                   value={form.school}
                   onChange={handleChange}
+                  required
+                  hasError={!!errors.school}
                 />
+                {errors.school && (
+                  <div className="field-error">{errors.school}</div>
+                )}
+
                 <FormField
                   label="Title of study"
                   name="title"
                   value={form.title}
                   onChange={handleChange}
+                  required
+                  hasError={!!errors.title}
                 />
+                {errors.title && (
+                  <div className="field-error">{errors.title}</div>
+                )}
+
                 <FormField
-                  label="Date of study"
+                  label="Year of graduation"
                   name="date"
                   value={form.date}
                   onChange={handleChange}
+                  options={years.map((y) => ({ value: y, label: y }))}
+                  required
+                  hasError={!!errors.date}
                 />
+                {errors.date && (
+                  <div className="field-error">{errors.date}</div>
+                )}
+
                 <div style={{ display: "flex", gap: 8 }}>
                   <button type="submit">Save</button>
                   <button type="button" onClick={cancelEdit}>
