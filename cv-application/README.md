@@ -106,6 +106,12 @@ This project is licensed under the MIT License.
 
 ---
 
+## Live preview
+
+https://hencci-cv-builder.netlify.app
+
+---
+
 ## Contact
 
 Created by [Henry Moses](https://github.com/hencci)
