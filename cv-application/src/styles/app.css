@@ -1,0 +1,168 @@
+/* Layout: two-column (forms + preview) */
+.app-container.two-column {
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 20px;
+  align-items: start;
+}
+
+/* Single-column fallback */
+@media (max-width: 980px) {
+  .app-container.two-column {
+    grid-template-columns: 1fr;
+    padding: 14px;
+  }
+}
+
+.panel {
+  background: var(--card);
+  padding: 18px;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 30px var(--glass);
+  border: 1px solid rgba(15, 23, 42, 0.03);
+}
+
+.panel h2,
+.panel h3 {
+  margin: 0 0 10px 0;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.general-section,
+.education-section,
+.experience-section {
+  margin-top: 14px;
+  padding-top: 6px;
+  border-top: 1px dashed rgba(15, 23, 42, 0.03);
+}
+
+/* --------------------------
+   Form control styles (used by FormField.jsx)
+   -------------------------- */
+.form-row {
+  margin-bottom: 12px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #0b1220;
+  font-weight: 600;
+}
+
+.required {
+  color: var(--danger);
+  margin-left: 6px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* inputs / textarea / select */
+.form-control {
+  width: 100%;
+  min-height: var(--input-height);
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #fff;
+  font-size: 14px;
+  color: var(--text);
+  transition: box-shadow 0.12s ease, border-color 0.12s ease,
+    transform 0.06s ease;
+  outline: none;
+}
+
+.form-control:focus {
+  box-shadow: 0 4px 18px rgba(37, 99, 235, 0.08);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.form-select {
+  height: var(--input-height);
+}
+
+.form-control.invalid {
+  border-color: rgba(220, 38, 38, 0.9);
+  background: #fff6f6;
+}
+
+.field-error {
+  margin-top: 6px;
+  color: var(--danger);
+  font-size: 13px;
+}
+
+button {
+  background: transparent;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s ease, transform 0.06s ease, box-shadow 0.12s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button.primary {
+  background: linear-gradient(180deg, var(--accent), var(--accent-600));
+  color: #fff;
+  border: none;
+}
+button.ghost {
+  background: transparent;
+}
+
+/* small inline button group spacing */
+button + button {
+  margin-left: 8px;
+}
+
+/* small helpers for display items */
+.display-block h4 {
+  margin: 0 0 6px 0;
+  font-weight: 700;
+}
+
+.display-block p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Reset default input invalid styling in some browsers */
+input:invalid {
+  box-shadow: none;
+}
+
+/* small reset for mini forms */
+.mini-form {
+  margin-bottom: 14px;
+  background: transparent;
+  padding: 0;
+}

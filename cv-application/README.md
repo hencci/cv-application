@@ -1,12 +1,112 @@
-# React + Vite
+# CV Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and interactive CV/Resume generator built with **React + Vite**.  
+Users can input their personal information, education, and work experience to generate a polished résumé preview in real time.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- Dynamic form inputs for:
+  - General info (name, email, phone number)
+  - Education history
+  - Work experience
+- Live CV preview with smooth **fade-in animation**
+- Form validation:
+  - Phone numbers must be exactly 11 digits starting with 080, 070, 090, 081, 071, or 091
+  - All fields are required
+  - Easy date selection via dropdowns
+- Clean and modern design with reusable React components
+- Responsive layout for desktop and mobile
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📦 Tech Stack
+
+- **React 18** (components & state management)
+- **Vite** (lightning-fast dev environment)
+- **CSS Modules / custom styles** (for styling and animations)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) v16+
+- npm (comes with Node) or yarn/pnpm
+
+### Installation
+
+```bash
+# Clone this repository
+git clone https://github.com/hencci/cv-application.git
+
+# Go into the project folder
+cd cv-application
+
+# Install dependencies
+npm install
+```
+
+### Development
+
+```bash
+# Run local dev server
+npm run dev
+```
+
+Visit local host in your browser
+
+---
+
+## 📁 Project Structure
+
+```css
+src/
+  components/
+    GeneralInfo.jsx
+    EducationForm.jsx
+    ExperienceForm.jsx
+    CVPreview.jsx
+    FormField.jsx
+  styles/
+    app.css
+    education.css
+    experience.css
+    general.css
+    preview.css
+  utils/
+    dateUtils.js
+  App.css
+  App.jsx
+  index.css
+  main.jsx
+index.html
+REASDME.md
+```
+
+---
+
+## 🖼️ Screenshots
+
+![CV screenshot](./src/images/CV-screenshot.PNG)
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to add or modify.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+## Contact
+
+Created by [Henry Moses](https://github.com/hencci)
+Feel free to reach out if you have any questions
